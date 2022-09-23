@@ -3,124 +3,246 @@
     margin:0;
 }
 
-#big_box{
+            #big_box{
+                width:100%;
+                height:100%;
+                /* background-image:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.17sucai.com%2Fupload%2F55%2F2013-05-18%2F4b3f25b49386b29c6907791fb00cf3e8.jpg%3Fx-oss-process%3Dstyle%2Fbig&refer=http%3A%2F%2Fimg.17sucai.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1666351442&t=db6815a81f8be1506c3ef587071f8a80);                 */
+                /* background-size: 100% 100%;
+                background-position-y: 60px; */
+                /* background-color: rgb(235,236,230); */
+                background-image: url(https://pic.rmb.bdstatic.com/bjh/news/df433219d57231f115a6851beeb565dc.jpeg);
+                background-size: 100%,100%;
+                /* background-color: rgb(0,0,255); */
 
-    /* background-image:url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.17sucai.com%2Fupload%2F55%2F2013-05-18%2F4b3f25b49386b29c6907791fb00cf3e8.jpg%3Fx-oss-process%3Dstyle%2Fbig&refer=http%3A%2F%2Fimg.17sucai.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1666351442&t=db6815a81f8be1506c3ef587071f8a80);                 */
-    /* background-size: 100% 100%;
-    background-position-y: 60px; */
-    background-color: rgb(235,236,230);
-    /* background-color: rgb(0,0,255); */
-
-}
-
-
-header{
-    width:100%;     /*依次设置宽、高、内间距、边框属性、外间距*/
-    height:46px;
-
-    padding:0px;
-    /* border-style: solid;
-    border-width: thin;
-    border-color:blue; */
-    margin-bottom:1%;
-
-    background-color: rgb(45, 52, 64);
-    /* background-image: url(../../Picture/OnlySeven06.jpg);
-    background-repeat: no-repeat; */
-
-}
+            }
 
 
-#major{
-    width:80%;
-    height:1500px;
+            header{
+                width:100%;     /*依次设置宽、高、内间距、边框属性、外间距*/
+                height:46px;
 
-    padding:0px;
-    border-style: solid;
-    border-width: thin;
-    border-color:blue;
+                padding:0px;
+                /* border-style: solid;
+                border-width: thin;
+                border-color:blue; */
+                margin-bottom:2%;
 
-    margin-left: 10%;
-    margin-bottom:1%;
+                background-color: rgb(45, 52, 64);
+                /* background-image: url(../../Picture/OnlySeven06.jpg);
+                background-repeat: no-repeat; */
 
-}
-
-footer{
-    width:60%;
-    height:30px;
-
-    padding:0px;
-    border-style:solid;
-    border-width:thin;
-    border-color: aqua;
-    margin-left:20%;
-    /* margin-bottom:1%; */
-
-}
-
-#navigation_bar{
-    width:80%;
-    height:40px;
-
-    padding:0px;
-    border-style:solid;
-    border-width:thin;
-    border-color:rgb(45, 52, 64);
-
-    margin-left:10%;        /*设置边距使其居中*/
-    margin-top:4px;
-    
-
-}
-
-#nav_ul{
-    
-    width:100%;
-    height:20px;
-
-    /* border-style:solid;
-    border-color:brown;
-    border-width:thin; */
+            }
 
 
-    list-style-type: none;   /*去除导航栏里无序列表的标点*/
-    text-align:left;
-    margin-top:9px;
-}
+            #major{
+                width:80%;
+                height:1500px;
 
-.nav_li{                        /*设置导航列表的样式*/
-    font-size:18px;
-    /* color:rgb(233,252,251); */               
-    display:inline;             /*改为横向排列*/
-    padding:11px;
-    /* width:10px; */
+                padding:0px;
+                /* border-style: solid;
+                border-width: thin;
+                border-color:blue; */
 
-    
-    /* border-style:solid;
-    border-color:black;
-    border-width:thin; */
+                margin-left: 10%;
+                margin-bottom:1%;
 
-    /* margin-left:40px; */
-}
+                /* background-color:rgb(100,149,237,0.2); */
+                background-color: rgb(235,236,230,0.7);
 
-.nav_jump{                      /*设置导航跳转连接的样式*/
+            }
 
-    color:rgb(240,248,255);
-    text-decoration: none;
-}
+            footer{
+                width:60%;
+                height:30px;
 
-.nav_li:hover{                  /*通过：hover伪类选择器实现鼠标在导航栏悬停时改变样式*/
-    background-color:rgb(89,135,136);
-    border-radius: 15%;         /*将边框改为圆角*/
-}
+                padding:0px;
+                border-style:solid;
+                border-width:thin;
+                border-color: aqua;
+                margin-left:20%;
+                /* margin-bottom:1%; */
 
-.nav_li:checked{
-    background-color:cornflowerblue
-}
+            }
 
-#nav_logo{                      /*导航栏Logo*/
+            #navigation_bar{
+                width:80%;
+                height:40px;
 
-    width:143px;
-    height:46px;
-    float:left;
-}
+                padding:0px;
+                border-style:solid;
+                border-width:thin;
+                border-color:rgb(45, 52, 64);
+
+                margin-left:10%;        /*设置边距使其居中*/
+                margin-top:4px;
+                
+
+            }
+
+            #nav_ul{
+                
+                width:100%;
+                height:20px;
+
+                /* border-style:solid;
+                border-color:brown;
+                border-width:thin; */
+
+
+                list-style-type: none;   /*去除导航栏里无序列表的标点*/
+                text-align:left;
+                margin-top:9px;
+            }
+
+            .nav_li{                        /*设置导航列表的样式*/
+                font-size:18px;
+                /* color:rgb(233,252,251); */               
+                display:inline;             /*改为横向排列*/
+                padding:11px;
+                /* width:10px; */           
+                /* border-style:solid;
+                border-color:black;
+                border-width:thin; */
+                border-radius: 15%;         /*将边框改为圆角*/
+
+                /* margin-left:40px; */
+            }
+
+            .nav_li:hover{                  /*通过：hover伪类选择器实现鼠标在导航栏悬停时改变样式*/
+                background-color:rgb(89,135,136);
+                /* background-color:rgb(120,214,120); */
+                       
+            }
+
+
+            .nav_li_click{
+
+                font-size:18px;
+                display:inline;
+                padding:11px; 
+
+                background-color:rgb(133,124,211);
+                border-radius: 15%; 
+            }
+
+           
+            .nav_jump{
+                color:rgb(235,236,230);         
+                text-decoration: none;
+            }
+
+
+            #nav_logo{                      /*导航栏Logo*/
+
+                width:143px;
+                height:46px;
+                float:left;
+            }
+
+            /*主体滚动栏实现*/
+            #banner{                   /*显示窗口*/
+
+                width:600px;
+                height:337px;
+
+                /* border-style: solid;
+                border-width:thin;
+                border-color:blueviolet; */
+                margin:0px;
+
+                position:relative;
+                top:0px;
+                left:0px;
+
+                overflow: hidden;
+
+            }
+
+            #rol_pic{                       /*图片承载窗口*/
+
+                width:3000px;
+                height:337px;
+
+                /* border-style: solid;
+                border-width:thin;
+                border-color:chartreuse; */
+                margin-left:0px;
+
+                position:relative;
+                text-align: left;
+
+            }
+
+            .pic{                            /*图片*/
+                width:600px;
+                height:337px;
+
+                position:relative;
+                float:left;
+            }
+
+            #rol_btn{  
+                width:600px;
+                height:20px;                     /*底部滚动按钮div*/
+
+                /* border-style:solid;
+                border-width:thin;
+                border-color: crimson; */
+
+                position:absolute;
+                bottom:0px;
+                left:0px;
+            }
+
+            #rol_ul{
+                width:600px;
+                height:20px;
+
+                /* border-style:solid;
+                border-width:thin;
+                border-color: crimson; */
+
+                list-style-type:none;
+                letter-spacing: -8px;          /*消除li之间的空白*/
+                text-align: left;
+                /* overflow: auto; */
+            }
+
+            .rol_li{
+                display:inline-block;                   /*关键点所在*/ 
+                width:20%;
+                height:100%;
+
+                /* border-style: solid;
+                border-width:thin;
+                border-color:blue; */
+
+
+                font-size:15px;
+                letter-spacing: normal;
+                color:rgb(235,236,230);
+                text-align:center;
+
+                background-color:rgb(255,228,196,0.3);
+                
+            }
+
+            /* .rol_li:hover{                                  
+                background-color:rgb(255,136,57,0.8);
+            }  */
+
+            .rol_li_select{
+                display:inline-block;                  
+                width:20%;
+                height:100%; 
+
+                /* border-style: solid;
+                border-width:thin;
+                border-color:blue; */
+                font-size:15px;
+                letter-spacing: normal;
+                color:rgb(235,236,230);
+                text-align:center;
+
+                background-color:rgb(255,136,57,0.8);
+            }
