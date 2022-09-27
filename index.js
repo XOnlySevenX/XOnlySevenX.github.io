@@ -1,194 +1,197 @@
-$(function(){
+ $(function(){
 
-    $("#nav_ul li:eq(0)").attr("class","nav_li_click");
-    $("#nav_ul li").click(function(){
-        $(".nav_li_click").attr("class","nav_li");      //将已选择的导航样式改变
-        $(this).attr("class","nav_li_click");           //改变当前导航颜色
+                $("#nav_ul li:eq(0)").attr("class","nav_li_click");
+                $("#nav_ul li").click(function(){
+                    $(".nav_li_click").attr("class","nav_li");      //将已选择的导航样式改变
+                    $(this).attr("class","nav_li_click");           //改变当前导航颜色
 
-    });
+                });
 
-    //鼠标悬停改变滚动栏底部颜色
-    $("#rol_ul li").hover(
-    function(){
-        console.log("flag");
 
-        clearInterval(rol_pic_interval);                //清除所有定时器
-        rol_pic_interval=null;
-        clearTimeout(rol_pic_timeOut);
-        rol_pic_timeOut=null;
+                //鼠标悬停改变滚动栏底部颜色
+                $("#rol_ul li").hover(                                  //鼠标悬停
+                    function(){
+                        //console.log("flag");
+                        //清除所有定时器
+                        rol_stop();
 
-        $("#rol_ul li").attr("class","rol_li");         //滚动条样式改变
-        $(this).attr("class","rol_li_select");
+                        $("#rol_ul li").attr("class","rol_li");          
+                        $(this).attr("class","rol_li_select");
 
-        var index = $(this).index();                    //获取悬停元素索引 
-        var n_mar_left = parseInt($("#rol_pic").css("margin-left"));    //获取当前位置margin
-        var t_mar_left = (-600)*index;                    //计算目标位置margin
-        var c_mar_left = t_mar_left-n_mar_left;
+                        var index = $(this).index();
+                        var t_mar_left = parseInt( index *-600 );
 
-        if(c_mar_left>0){
-            rol_pic_interval = setInterval(function(){
-            var n_mar_left = parseInt($("#rol_pic").css("margin-left"));    //获取当前位置margin
-            var c_mar_left = t_mar_left-n_mar_left;
-            if(c_mar_left>20){
-                $("#rol_pic").css("margin-left",n_mar_left+c_mar_left/10+"px");
-            }
-            else if(c_mar_left>=5 && c_mar_left<=20){
-                $("#rol_pic").css("margin-left",n_mar_left+1+"px");
-            }
-            else{
-                $("#rol_pic").css("margin-left",t_mar_left+"px");
-            }
+                        rol_pic_interval = setInterval(function(){
+                            rol_margin_jump (t_mar_left,0);
+                        },10);
+                    
+                    },function(){                                       //鼠标离开              
+                        rol_stop();
+                        var index = $(this).index();
+                        var t_mar_left = parseInt( index *-600 );
 
-            if(n_mar_left == t_mar_left){
-                clearInterval(rol_pic_interval);
-                rol_pic_interval=null;
-            }
+                        rol_pic_interval = setInterval(function(){
+                            rol_margin_jump (t_mar_left,1);
+                        },10);
 
-        },5);
+                    // hide_rrl();
+                    
+                    
+                });
 
-        }else{
-            rol_pic_interval = setInterval(function(){
-            var n_mar_left = parseInt($("#rol_pic").css("margin-left")); 
-            var c_mar_left = t_mar_left-n_mar_left;
-            if(c_mar_left<-20){
-                $("#rol_pic").css("margin-left",n_mar_left+c_mar_left/10+"px");
-            }
-            else if(c_mar_left>=-20 && c_mar_left <=-5){
-                $("#rol_pic").css("margin-left",n_mar_left-1+"px");
-            }
-            else{
-                $("#rol_pic").css("margin-left",t_mar_left+"px");
-            }
-            if(n_mar_left == t_mar_left){
-                clearInterval(rol_pic_interval);
-                rol_pic_interval=null;
-            }
-        },5);
-        }
+                //每三秒定时滑动图片
+                function rol_picture(){
+
+                        var t_mar_left;
+                        var n_mar_left = parseInt($("#rol_pic").css("margin-left"));         //获取原来左外间距的值
+
+                        if(n_mar_left != -2400){
+                            t_mar_left = n_mar_left-1;
+                        }else{
+                            t_mar_left = -2400;
+                        }                                                                   //计算目标值
+
+                        rol_li_jump(t_mar_left);                                            //进行滚动条跳转
+
+                        if(t_mar_left%600 == 0){                                            //判断关键值
+
+                            if(t_mar_left == -2400){ 
+
+                                rol_stop();
+                                //console.log("标记01");
+                                $("#rol_pic").css("margin-left",t_mar_left + "px");
+              
+                                rol_pic_timeOut = setTimeout(function(){
+                                    rol_pic_interval = setInterval(function(){
+                                        rol_margin_jump(0,1);
+                                    });
+                                },3000);                               
+                                //console.log("标记03");
+  
+                            }else{
+                                rol_stop();                                                 //不在-2400关键点位
+
+                                $("#rol_pic").css("margin-left",t_mar_left+"px");
+
+                                rol_pic_timeOut =  setTimeout(function(){
+                                    rol_pic_interval = setInterval(rol_picture,5);
+                                },3000);
+                                
+                            }    
+                        }else{
+                            t_mar_left = n_mar_left - 1;
+                            $("#rol_pic").css("margin-left",t_mar_left+"px");                           
+                            //console.log("06");
+                        }
+                        //console.log("pic结束");
+
+                }
+
        
-        // console.log(index);
-        // console.log(mar_left);
+                //位置跳转 通用
+                function rol_margin_jump(t_mar_left,flag){
 
-        //$("#rol_pic").css("margin-left",l_mar_left+"px");
-        
-    },function(){
-        //$(this).attr("class","rol_li");                     
-        //离开后 
-        clearInterval(rol_pic_interval);
-        rol_pic_interval = null;
-        clearTimeout(rol_pic_timeOut);
-        rol_pic_timeOut=null;
-        rol_pic_timeOut = setTimeout(function(){
-            rol_pic_interval= setInterval(rol_picture,5);
-        },3000);
-        
-    });
+                    var a = $("#rol_pic").css("margin-left");
+                    var n_mar_left = parseInt(a);
+                    var c_mar_left = t_mar_left - n_mar_left;
+                                       
+                    var c_mar_left = t_mar_left - n_mar_left;      //计算出差值
+                    var displace = c_mar_left/10;
 
-    //每三秒定时滑动图片
-    function rol_picture(){
+                    rol_li_jump(t_mar_left);
 
-            var n_mar_left;
-            var o_mar_left = parseInt($("#rol_pic").css("margin-left"));         //获取原来左外间距的值
-            //alert(o_mar_left);
-            if(o_mar_left != -2400){
-                n_mar_left = o_mar_left-1;
-            }else{
-                n_mar_left = -2400;
-            }
+                    if(c_mar_left > 0){
 
-            var num= Math.trunc((Math.abs(o_mar_left)+100)/600);
-            $("#rol_ul li").attr("class","rol_li");
-            $("#rol_ul li:eq("+num+")").attr("class","rol_li_select");
-            // var compare = [0,-600,-1200,-1800,-2400];
-            // if(o_mar_left == -2399){
+                        if(c_mar_left > 50){
+                            $("#rol_pic").css("margin-left",n_mar_left + displace + "px");     //第一阶段快速跳转
 
-            //     clearInterval(rol_pic_interval);
-            //     rol_pic_interval = null; 
-            //     n_mar_left=o_mar_left-1;
-            //     $("#rol_pic").css("margin-left",n_mar_left+"px");
+                        }else if(c_mar_left <= 50 && c_mar_left > 5 ){
+                            $("#rol_pic").css("margin-left",n_mar_left + 1 + "px");                 //第二阶段平滑过渡
 
-            if(n_mar_left%600 == 0){
+                        }else{
+                            $("#rol_pic").css("margin-left",t_mar_left + "px");                     //第三阶段到位
 
-                if(n_mar_left == -2400){ 
+                            //rol_li_jump(n_mar_left);                                                //滚动栏底部样式改变
+                           rol_stop();
 
-                    // rol_pic_timeOut =  setTimeout(function(){
-                    //     rol_pic_interval = setInterval(rol_picture,5);
-                    // },3000);
+                            if(flag ==1){                                                           //标记是否计时后滚动
+                                rol_pic_timeOut = setTimeout(function(){
+                                    rol_pic_interval = setInterval(rol_picture,5);
+                                },3000);
+                            }
+                            
+                        }
+
+                    }else{
+
+                        if(c_mar_left < -50){
+                            $("#rol_pic").css("margin-left",n_mar_left + displace + "px");     //第一阶段快速跳转
+                        }
+                        else if(c_mar_left >= -50 & c_mar_left < -5 ){
+                            $("#rol_pic").css("margin-left",n_mar_left - 1 + "px");                 //第二阶段平滑过渡
+
+                        }
+                        else{
+                            $("#rol_pic").css("margin-left",t_mar_left + "px");                     //第三阶段到位
+
+                            rol_stop();
+
+                            if(flag ==1){                                                          //标记是否计时后滚动
+                                if(t_mar_left == -2400){
+                                    rol_pic_interval = setInterval(rol_picture,5);
+                                }else{
+                                    rol_pic_timeOut = setTimeout(function(){
+                                        rol_pic_interval = setInterval(rol_picture,5);
+                                    },3000);
+                                }            
+                            }
+
+                        }
+
+                    }
+                    //rol_pic_interval = setInterval(rol_margin_jump(t_mar_left),20);
+                    //console.log("结束");
+
+                }
+
+
+                //位置暂停 通用
+                function rol_stop(){
+
                     clearInterval(rol_pic_interval);
                     rol_pic_interval = null;
-                    console.log("标记01")
                     clearTimeout(rol_pic_timeOut);
                     rol_pic_timeOut = null;
+
+                }
+
                 
-                    console.log("标记02");
-                    rol_pic_timeOut = setTimeout(function(){
-                        rol_pic_interval = setInterval(reset_first,10);
-                    },0);
-                    
-                    console.log("标记03");
+                //滚动栏底部样式改变 通用
+                function rol_li_jump(n_mar_left){
 
-                }else{
-                    clearInterval(rol_pic_interval);
-                    rol_pic_interval = null; 
+                    var index = Math.trunc( (Math.abs(n_mar_left)+50)/600 );
+                    //console.log(index);
+                    $("#rol_ul li").attr("class","rol_li");
+                    $("#rol_ul li:eq(" + index + ")").attr("class","rol_li_select");
 
-                    rol_pic_timeOut =  setTimeout(function(){
-                        rol_pic_interval = setInterval(rol_picture,5);
-                    },3000);
-                    
-                    $("#rol_pic").css("margin-left",n_mar_left+"px");
-                    console.log("05");
-                }          
-                // console.log(n_mar_left in compare);
-                // console.log(compare.indexOf(n_mar_left)); 
+                }
+
+                //定时器
+                var rol_pic_interval = window.setInterval(rol_picture,5);
+                var rol_pic_timeOut;
+                // var judge_r_l =setInterval(hide_rrl,10);
+
+                // //滚动栏旁边链接
+                // function hide_rrl(){
+                //     var rrl_head = parseInt( $("#rrl_head").width());
+                //     var rol_right_link = parseInt( $("#rol_right_link").width() );
+                //     if(rrl_head+19 == rol_right_link){
+                //     $("#rol_right_link").hide();
+                //     }else{
+                //         $("#rol_right_link").show();
+                //     }  
                 
-                // console.log("执行到了");     
-            }else{
-                n_mar_left=-1+o_mar_left;
-                $("#rol_pic").css("margin-left",n_mar_left+"px");                           
-                console.log("06");
-            }
+                // }            
 
-            // if(mar_left==-2400){
-            //         mar_left=0;
-            //         num=0;
-            // }  
-            console.log("07");
-    }
-
-    //鼠标悬停平滑定位
-
-    function reset_first(){
-        var rf_mar_left = parseInt($("#rol_pic").css("margin-left"));    //获取当前位置margin
-        if(rf_mar_left < -100){
-            console.log("标记1");
-            $("#rol_pic").css("margin-left",rf_mar_left+40+"px");
-
-        }else if(rf_mar_left >= -100 && rf_mar_left<-5){
-
-            console.log("标记2");
-            $("#rol_pic").css("margin-left",rf_mar_left+1+"px");
-            $("#rol_ul li").attr("class","rol_li");
-            $("#rol_ul li:eq(0)").attr("class","rol_li_select");
-            
-        }else{
-
-            console.log("标记3");
-            $("#rol_pic").css("margin-left","0px");
-
-            clearInterval(rol_pic_interval);
-            rol_pic_interval = null;
-            clearTimeout(rol_pic_timeOut);
-            rol_pic_timeOut = null;
-            
-            rol_pic_timeOut =  setTimeout(function(){
-                rol_pic_interval = setInterval(rol_picture,5);
-            },3000);
-        }
-                
-        console.log("标记4");
-    }     
-
-    var rol_pic_interval = window.setInterval(rol_picture,5);
-    var rol_pic_timeOut;
-
-});
+            });
+          
