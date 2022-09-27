@@ -1,4 +1,4 @@
-            *{
+           *{
                 padding:0;
                 margin:0;
                 /* text-align: center; */
@@ -26,7 +26,7 @@
                 /* border-style: solid;
                 border-width: thin;
                 border-color:blue; */
-                margin-bottom:2%;
+                margin-bottom:20px;
 
                 background-color: rgb(45, 52, 64);
                 /* background-image: url(../../Picture/OnlySeven06.jpg);
@@ -34,9 +34,16 @@
 
             }
 
+            #main{
+                width:100%;
+                height:1500px;
+                /* border:thin solid black; */
+                margin-bottom: 20px;
+
+            }
 
             #major{
-                width:80%;
+                width:60%;
                 height:1500px;
 
                 padding:0px;
@@ -45,23 +52,52 @@
                 border-color:blue; */
 
                 margin-left: 10%;
-                margin-bottom:1%;
+                margin-bottom:20px;
 
                 /* background-color:rgb(100,149,237,0.2); */
                 background-color: rgb(235,236,230,0.7);
+                /* float: left; */
+
+
 
             }
 
+            #sidebar{
+                width:18%;
+                height:50%;
+                /* border:thin solid blue; */
+                /* margin-top:-1620px;
+                margin-left: 55%;
+                margin-right: 10%; */
+
+                float: right;
+                margin-right: 10%;
+                margin-top: -1520px;
+
+                background-color: rgb(235,236,230,0.7);
+                color: rgb(45, 52, 64);
+
+                
+                /* margin-right:10%; */
+
+                /* position:absolute;
+                right: 10%;
+                top:9%; */
+            }
+
             footer{
-                width:60%;
+                width:100%;
                 height:30px;
 
                 padding:0px;
-                border-style:solid;
+                /* border-style:solid;
                 border-width:thin;
-                border-color: aqua;
-                margin-left:20%;
+                border-color: aqua; */
+                /* margin-left:20%; */
                 /* margin-bottom:1%; */
+                background-color: rgb(76, 99, 134);
+
+                /* text-align: center; */
 
             }
 
@@ -75,9 +111,7 @@
                 border-color:rgb(45, 52, 64);
 
                 margin-left:10%;        /*设置边距使其居中*/
-                margin-top:4px;
-                
-
+                margin-top:4px
             }
 
             #nav_ul{
@@ -105,7 +139,6 @@
                 border-color:black;
                 border-width:thin; */
                 border-radius: 15%;         /*将边框改为圆角*/
-
                 /* margin-left:40px; */
             }
 
@@ -169,7 +202,7 @@
                 border-color:chartreuse; */
                 margin-left:0px;
 
-                position:relative;
+                /* position:relative; */
                 text-align: left;
 
             }
@@ -178,7 +211,7 @@
                 width:600px;
                 height:337px;
 
-                position:relative;
+                /* position:relative; */
                 float:left;
             }
 
@@ -247,3 +280,337 @@
 
                 background-color:rgb(255,136,57,0.8);
             }
+
+
+
+
+
+
+
+            #rol_right_link{
+                /* width:50%-600px; */
+                width:50%-600px;
+                height:337px;
+
+                /* border:thin solid red; */
+                margin:-337px 0px 0px 600px;
+                padding:0px 20px 0px 20px;
+
+                background-color:rgb(235,236,230);
+
+            }
+
+            #rol_right_link_ul{
+                /* display: block; */
+                overflow: hidden;
+                width: 100%;
+                height:100%;
+                list-style-type: none;
+                font-size: 13px;;
+                text-align: left;
+            }
+
+            .rol_right_link_li{
+                padding: 14.5px;
+                overflow: hidden;
+                /* border-bottom-style: dotted; */
+            }
+
+            /* .rol_right_link_li:hover{
+                background-color: rgb(255,136,57,0.5);
+            } */
+
+            #rrl_head{
+                text-align: center;
+                font-size: 15px;
+            }
+
+            .rol_right_link_a{
+                text-decoration: none;
+            }
+
+            .rol_right_link_a:hover{
+                color:rgb(255,0,0);
+            }
+
+            .rrla_date{
+                width:40px;
+                /* border: thin solid rgb(150,150,150); */
+                float: right;
+                color:rgb(130,130,130)
+            }
+
+
+
+
+
+            /* 内容 */
+            #context{
+                width:93%;
+                height:500px;
+                /* padding:0px 0px 0px 10px; */
+                padding-top:20px;
+                margin-top: 60px;
+                margin-left: 3.5%;
+
+                /* border: thin solid blue; */
+                border-left: thin solid rgb(130,130,130);
+                text-align: left;
+                /* text-indent: 2em; */
+                letter-spacing: 1em;
+                writing-mode: vertical-rl;
+
+            }
+
+            #context_head{
+                width:3.4%;
+                margin-top: 60px;
+                /* border:thin solid red; */
+            }
+
+            #context_content{
+                width:96.6%;
+                /* border:thin solid darkorange; */
+                text-align: left;
+                overflow: auto;
+            }
+
+            #context_content h2{
+                text-indent: 7em;
+            }
+
+            h3{
+                margin-top: 35%;
+            }
+
+
+
+            /*音乐*/
+            #music{
+                width: 90%;
+                height:200px;
+                /* border:thin solid red; */
+                margin-left: 5%;
+
+                margin-top: 60px;
+            }
+
+            #music_head{
+                /* border:thin solid blue; */
+                letter-spacing: 1em;
+                width:100%;
+                margin-left: 0%;
+
+
+            }
+            .music_audio{
+                width:80%;
+                height: 50px;
+                border:thin solid rgb(138, 43, 226);
+                border-radius: 15px;
+
+                margin-left: 10%;
+                margin-top: 20px;
+
+                background-color: rgb(241,243,244);
+
+            }
+
+            .music_pic{
+                width:50px;
+                height:50px;
+                border-radius: 15px;
+
+                float:left;
+            }
+
+            .music_name{
+                height: 20px;
+                width:40%;
+                /* border:thin solid blue; */
+
+                margin-left: 3%;
+                float: left;
+
+                font-size: 16px;
+                color:rgb(138, 43, 226);
+            }
+
+            .music_singer{
+                font-size: 12px;
+                color:rgb(97, 71, 186);
+                /* border:thin solid black; */
+            }
+
+
+            audio{
+                width: 90%;
+                height:20px;
+                margin-top: 5px;
+            }
+
+            #video_box{
+                width: 90%;
+                height:200px;
+                /* border:thin solid red; */
+
+                margin-top: 60px;
+                margin-left: 5%;
+
+                writing-mode:vertical-lr;
+
+            }
+
+            #vb_head{
+                width: 3.5%;
+                /* border:thin solid blue; */
+                /* margin-left: 25%; */
+                letter-spacing: 1em;
+                
+
+            }
+
+            .vb_show{
+                width:25%;
+                height:80%;
+                /* border: thin solid red; */
+                margin-left:23%;
+                margin-top: 10%;
+            }
+
+            video{
+                width:100%;
+                height:90%;
+            }
+
+            .v_des{
+                width:100%;
+                height: 10%;
+                /* border:thin solid blue; */
+                writing-mode: initial;
+
+                position:relative;
+                left:-100%;
+                top:90%;
+
+                font-size: 13px;
+                text-align: center;
+
+            }
+
+
+
+            /* 侧边栏实现 */
+
+            #side_head{
+                width:80%;
+                height:5%;
+
+                /* border:thin solid forestgreen; */
+                margin:15% 0% 0% 10%;
+
+                text-align: center;
+                font-size: 25px;
+
+            }
+
+            #side_m{
+                width:70%;
+                height:80%;
+
+                /* border:thin solid red; */
+                margin:10% 0% 0% 15%;
+
+            }
+
+            .side_c{
+                width:100%;
+                height: 25%;
+
+                /* border:thin solid blue; */
+                margin-bottom: 25%;
+            }
+
+            .side_i{
+                width: 100%;
+                height:85%;
+
+                /* border:thin solid red; */
+                float:left;
+
+            }
+
+            .side_d{
+                width:100%;
+                height:15%;
+                float:right;
+                /* margin-top: -10%; */
+                font-size: 15px;
+                text-align: center;
+                /* position: relative;
+                top:-5%; */
+
+                /* border:thin solid teal; */
+
+            }
+
+
+
+            #foot{
+                width:100%;
+                height:100%;
+                
+                /* border-style: solid;
+                border-width: thin;
+                border-color: black; */
+                /* text-align: center; */
+                /* background-color: black; */
+
+            }
+
+            .foot_text{
+                font-size: 10px;
+                color:rgb(235,236,230);
+
+                /* border-style: solid;
+                border-width: thin;
+                border-color: white; */
+                text-align: center;
+
+            }
+
+            /* #foot_text1{
+                width:15%;
+                position:relative;
+                left:25%;
+                top:15%;
+            }
+
+            #foot_text2{
+                width:30%;
+                margin-left:50%;
+                position:relative;
+                top:15%;
+
+            } */
+
+            #foot_text1{
+                width:40%;
+                height:20px;
+
+                float: left;
+                position:relative;
+                top:5px;
+                left:10%;
+            }
+            #foot_text2{
+                width:40%;
+                height:20px;
+
+                float:left;
+                position:relative;
+                top:5px;
+                left:10%;
+            }
+
+
