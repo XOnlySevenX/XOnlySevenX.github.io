@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style type="text/css">
+
+        body{
+            font-size: 50px;
+        }
+
+        input{
+            width:200px;
+            height:40px;
+            font-size: 25px;
+        }
+
+        select{
+            width:50px;
+            height: 30px;
+            font-size: 25px;
+        }
+
+        button{
+            font-size: 25px;
+        }
+
+    </style>
+    <script src="../jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            var num1,num2,num3;
+            var calculator=false;
+            randomnum();
+
+            //加载随机数
+            function randomnum(){
+                num1 = Math.floor(Math.random()*20);
+                num2 = Math.floor(Math.random()*20);
+                $("#num_1").val(num1);
+                $("#num_2").val(num2);
+            
+                $("#select1").val(Math.floor(Math.random()*4));
+
+            }
+
+            //计算结果
+            function result(){
+
+                num1=parseInt($("#num_1").val());
+                num2=parseInt($("#num_2").val());
+                var sign =parseInt($("#select1 option:selected").val());
+                switch(sign){
+
+                    case 0: num3=num1+num2;
+                            break;
+                    case 1: num3=num1-num2;
+                            break;
+                    case 2: num3=num1*num2;
+                            break;
+                    case 3: num3=num1/num2;
+                            num3=Math.round(num3*100)/100;
+                            break;
+                }
+
+            }
+            
+            
+            //进行验证
+            $("#submit").click(function(){
+                
+                result();
+                if(num3==$("#num_3").val()){
+                    $("#judge").text("正确");
+                    $("#judge").css("color","blue");
+                }else{
+                    $("#judge").text("错误");
+                    $("#judge").css("color","red");
+                }
+
+            });
+
+            //下一次随机
+            $("#next").click(function(){
+
+                $("#num_3").val("");
+                $("#judge").text("");
+                randomnum();
+                var s = $("#num_1").val();
+                console.log(s);
+                
+            });
+
+            //计算
+            $("#calculate").click(function(){
+
+               
+                result();
+                $("#num_3").val(num3);
+
+                if($("#num_1").val()=="" || $("#num_2").val()=="" ){
+                    $("#judge").text("请输入完整数据");
+                    $("#num_3").val("");
+                }
+                
+
+
+
+            });
+
+            //切换模式
+            $("#switchMode").click(function(){
+
+                if(calculator){
+
+                    $("#mode").text("随机答题模式");
+                    $("#num_1").attr("readonly","true");
+                    $("#num_2").attr("readonly","true");
+                    $("#num_3").val("");
+                    $("select").attr("disabled","disabled");
+                    $(".randomMode").removeAttr("disabled","true");
+
+                    randomnum();
+                    calculator=false;
+
+                }else{
+
+                    $("#mode").text("计算器模式")
+                    $("input").removeAttr("readonly","true");
+                    $("select").removeAttr("disabled","true");
+                    $("input").val("");
+                    $(".randomMode").attr("disabled","true");
+                    calculator=true;
+                }
+                
+            });
+           
+        })
+    </script>
+
+</head>
+<body>
+    
+    <h1 id="mode">随机答题模式</h1>
+
+    <input type="text" id="num_1" readonly>
+
+    <select id="select1" disabled >
+        <option value=0>+</option>
+        <option value=1>-</option>
+        <option value=2>*</option>
+        <option value=3>/</option>
+    </select>
+
+    <input type="text" id="num_2" readonly>
+
+    <span>=</span>
+
+    <input type="text" id="num_3">
+
+    <button id="submit" class="randomMode">验证</button>
+    <button id="next" class="randomMode">下一个</button>
+    <button id="calculate">计算</button>
+    <button id="switchMode">切换模式</button>
+
+    <h2 id="judge"></h2>
+
+</body>
+</html>
