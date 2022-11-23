@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style type="text/css">
+        div{
+            width:100px;
+            height: 100px;
+            padding: 5px;
+            margin:10px;
+            border:1px solid rgb(100,100,200);
+            border-radius: 50%;
+
+            background-color: rgba(100,100,100,0.1);
+            color:white;
+            display: inline-block;
+           
+            text-align: center;
+            transition: all 0.5s;
+                      
+        }
+
+        .exdiv{
+            position: absolute;
+            
+        }
+
+        p{
+            margin-top:20%;
+            font-weight: bold;
+            color: rgb(79,200,88);
+            
+        }
+
+    </style>
+
+    <script>
+        $(function(){   
+
+            //页面绑定事件，鼠标点击打散页面元素
+            $(document).bind("click",randPx);
+            //页面绑定事件，鼠标移动页面排序
+            $(document).bind("mousemove",show);
+            $(document).bind("touchmove",show);
+            //根据页面大小设置div元素宽高
+            var bodyWidth = window.innerWidth;
+            var bodyHeight = window.innerHeight;            
+            var div_wh;
+            bodyHeight>bodyWidth?div_wh=bodyWidth/10:div_wh=bodyHeight/10;
+            
+            //每行的数量
+            const s = ['学号202,03011。离离原上草，一岁一枯荣。野火烧不尽，春风吹又生。远芳侵古道，晴翠接荒城。又送王孙去，萋萋满别情。' , '艳色天下重，西施宁久微。朝为越溪女，暮作吴宫妃。贱日岂殊众，贵来方悟稀。邀人傅脂粉，不自著罗衣。君宠益娇态，君怜无是非。当时浣纱伴，莫得同车归。持谢邻家子，效颦安可希！' , '绝代有佳人，幽居在空谷。自云良家子，零落依草木。关中昔丧乱，兄弟遭杀戮。官高何足论，不得收骨肉。世情恶衰歇，万事随转烛。夫婿轻薄儿，新人美如玉。合昏尚知时，鸳鸯不独宿。但见新人笑，那闻旧人哭！在山泉水清，出山泉水浊。侍婢卖珠回，牵萝补茅屋。摘花不插发，采柏动盈掬。天寒翠袖薄，日暮倚修竹。'] ;
+
+            var line = [];
+            
+            //页面创建
+            for (var i = 0; i < 1; i++) {    
+                //赋值给line数组 
+                line = s[i];
+                console.log(line);
+                //开始遍历赋值
+                for(j=0 ;j < line.length; j++){
+                    //创建p
+                    var p = $("<p></p>");
+                    p.append(line[j]);
+                    //创建div
+                    var divElement = $("<div></div>");
+                    divElement.append(p);
+                    //div内插入p并设置二者样式                   
+                    $("body").append(divElement);   
+                    $("div").last().attr("class","exdiv");
+                    $("div").css("width",div_wh);
+                    $("div").css("height",div_wh);
+                    $("p").css("font-size",div_wh/2+"px");
+                }
+                //设置标点符号样式
+                $(".exdiv").each(function(index,domEle){
+                    if((index+1)%6==0){
+                        $(domEle).css("border-radius","0");
+                        $(domEle).css("background-color","rgba(0,100,100,0.05)");
+                        $(domEle).css("border","none");
+                        
+                    }
+                })
+                                           
+            }
+
+            /*位置随机定位函数*/
+            function randPx(){
+                //添加绝对定位
+                $("div").addClass("exdiv");
+                $("div").each(function(index,domEle){
+
+                    var left = Math.random()*(bodyWidth-div_wh-30);
+                    var top = Math.random()*(bodyHeight-div_wh-30);
+                    
+                    $(domEle).css("left",left+"px");
+                    $(domEle).css("top",top+"px");
+                })
+
+            }
+
+
+            /*位置有序排列函数*/
+            function show(){
+                var row = -1;
+                var num = 0;
+                var margin = parseInt($("div").css("margin"));
+                //移除绝对定位
+                $("div").first().removeClass("exdiv");
+                //获取第一个div元素的位置
+                var left = $("div").first().offset().left;
+                var top = $("div").first().offset().top;
+                var height = $("div").first().outerHeight();
+                var width = $("div").first().outerWidth();
+                $("div").first().addClass("exdiv");
+                //遍历每个div
+                $(".exdiv").each(function(index,domEle){
+                    //换行的实现
+                    if(index%6==0){
+                        row++;
+                    }
+                    var target_top = top+height*row+margin*row;
+                    $(domEle).css("top",target_top+"px");
+
+                    if(num==6){
+                        num=0;
+                    }
+                    var target_left = left+num*width+margin*num;
+                    $(domEle).css("left",target_left+"px");
+                    num++;
+                    
+                })          
+
+            }
+
+             /*位置有序排列函数*/
+            //  function show(){
+            //     $("div").removeClass("exdiv");
+
+            //  }
+
+
+
+
+            randPx();
+        
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
