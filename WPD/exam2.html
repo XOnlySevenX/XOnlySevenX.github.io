@@ -84,12 +84,14 @@
         let elementDiv = document.getElementsByTagName('div');
         for(var i = 0;i<elementDiv.length;i++){
         let element = elementDiv[i];
+	//触屏点击元素进行驱散
         element.thouchmove = function(){
           function mouseover(){
             randomDiv(element);
           }
           mouseover();
         }
+	//鼠标进行驱散
         element.onmouseover = function(){       
           function mouseover(){
             randomDiv(element);
@@ -102,6 +104,7 @@
     
     show();
     change();
+    alert("有鼠标驱散效果，建议电脑查看,手机端触摸点击元素进行驱散");
 
       
   }
