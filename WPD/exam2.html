@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>
+   动态DOM编程起点和基础
+</title>
+  <style type="text/css">
+  *{
+    padding: 0;
+    margin: 0;
+  }
+
+	div{
+	  width:100px;
+	  height:100px;
+	  background-color:rgb(128,128,128,0.4);
+    border-radius: 50%;
+    padding: 10px;
+    margin: 20px;
+    display:inline-block;
+    transition: all 0.6s;
+
+    position: absolute;
+    top:0px;
+    left:0px;
+    
+	}
+
+   
+  p{
+    margin-top: 10%;
+    margin-left: 4%;
+    color: rgb(240, 248, 255);
+    text-align:center;
+  }
+  </style>
+
+  <script type="text/javascript">
+    window.onload=function(){
+
+      let winWidth = window.innerWidth;
+      let winHeight = window.innerHeight;
+
+      window.setInterval(refresh,100);
+
+
+      //根据窗口大小动态刷新
+      function refresh(){
+        var winWidthA = window.innerWidth;
+        var winHeightA = window.innerHeight;
+        if(winWidthA !=winWidth || winHeightA != winHeight){
+          winHeight = winHeightA;
+          winWidth = winWidthA;
+          document.body.innerHTML = " ";
+          show();
+          change();
+        }
+
+      }
+      
+
+      function randomDiv(divDom){   
+        divDom.style.left = Math.random()*(winWidth-160)+"px";
+        divDom.style.top = Math.random()*(winHeight-160)+"px";
+      }
+
+      //添加显示div
+      function show(){
+        for(var i=0;i<100;i++){
+        var pDom = document.createElement('p');
+        pDom.textContent="绝代有佳人，幽居在空谷，自云良家子，零落依草木。";
+	      var divDom = document.createElement('div') ;
+        divDom.appendChild(pDom);    
+        document.body.appendChild(divDom) ;
+
+        randomDiv(divDom);
+      
+      }
+      }
+
+      //改变div位置
+      function change(){
+        let elementDiv = document.getElementsByTagName('div');
+        for(var i = 0;i<elementDiv.length;i++){
+        let element = elementDiv[i];
+        element.thouchmove = function(){
+          function mouseover(){
+            randomDiv(element);
+          }
+          mouseover();
+        }
+        element.onmouseover = function(){       
+          function mouseover(){
+            randomDiv(element);
+          }
+          mouseover();
+        }  
+      }
+
+    }
+    
+    show();
+    change();
+
+      
+  }
+  </script>
+
+ </head>
+ <body>
+
+ </body>
+</html>
