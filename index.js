@@ -1,6 +1,9 @@
  $(function(){
   
-                alert("web最后一题在第一张轮播图，点击第一张轮播图进行跳转");
+                alert("Web前端第五题演示——轮播图1"+"\n"+
+                      "Web前端第五题代码——轮播图2"+"\n"+
+                      "Web前端第四题演示——轮播图3"+"\n"+
+                      "Web前端第四题代码——轮播图4"+"\n"+);
 
                 $("#nav_ul li:eq(0)").attr("class","nav_li_click");
                 $("#nav_ul li").click(function(){
