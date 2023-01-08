@@ -1,6 +1,6 @@
  $(function(){
   
-                alter("web最后一题在第一张轮播图，点击第一张轮播图进行跳转");
+                alert("web最后一题在第一张轮播图，点击第一张轮播图进行跳转");
 
                 $("#nav_ul li:eq(0)").attr("class","nav_li_click");
                 $("#nav_ul li").click(function(){
